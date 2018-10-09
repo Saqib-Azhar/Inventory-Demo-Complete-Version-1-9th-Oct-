@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DemoInven.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Order Details</h2>
+<table class="table" style="border:double">
+    <tr>
+        <td><b>Buyer</b></td>
+        <td>@Model.First().Order.BuyerName</td>
+        <td><b>Bought At</b></td>
+        <td>@Model.First().Order.BoughtAt</td>
+    </tr>
+    <tr>
+        <td><b>Total Price</b></td>
+        <td>@Model.First().Order.TotalPrice</td>
+        <td><b>Cashier</b></td>
+        <td>@Model.First().Order.AspNetUser.Email</td>
+    </tr>
+
+</table>
+<table class="table" style="border:double">
+    <tr>
+        <th>
+            @Html.DisplayName("Product Id")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductDescription)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductDescription)
+            </td>
+
+        </tr>
+    }
+
+</table>

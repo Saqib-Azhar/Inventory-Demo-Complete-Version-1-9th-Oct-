@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DemoInven.Models.StockDetail>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Stock Detail</h2>
+
+<p>
+    <a href="/Stocks/Create" class="btn btn-primary">Add Stock</a>
+</p>
+
+    <table class="table" style="border:double">
+        <tr>
+            <td><b>Stock Name</b></td>
+            <td>
+                @Html.DisplayFor(model => model.First().Stock.StockName)
+            </td>
+            <td><b>Added On</b></td>
+            <td>
+                @Html.DisplayFor(model => model.First().Stock.CreatedOn)
+            </td>
+        </tr>
+        <tr>
+            <td><b>Added By</b></td>
+            <td>
+                @Html.DisplayFor(model => model.First().Stock.AspNetUser.UserName)
+            </td>
+            <td><b>Supplier</b></td>
+            <td>
+                @Html.DisplayFor(model => model.First().Stock.Supplier.Name)
+            </td>
+        </tr>
+
+        </table>
+
+<table class="table" style="border:double">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock.StockName)
+        </th>
+        @*<th></th>*@
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock.StockName)
+            </td>
+            @*<td>
+                    <a href="/StockDetails/Edit/@item.Id" class="btn btn-warning">Edit</a>
+                </td>*@
+        </tr>
+    }
+
+</table>
+

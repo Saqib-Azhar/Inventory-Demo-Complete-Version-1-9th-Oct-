@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DemoInven.Models.Stock>
+
+@{
+    ViewBag.Title = "Stocks";
+}
+
+<h2>Stocks</h2>
+
+<p>
+    <a href="/Stocks/Create" class="btn btn-primary">Add Stock</a>
+</p>
+<table class="table" style="border:double">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StockName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+     
+        <th>
+            @Html.DisplayName("Added By")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier.Name)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="/Stocks/Details/@item.Id">@Html.DisplayFor(modelItem => item.StockName)</a>
+        </td>
+        <td>
+            <a href="/Stocks/Details/@item.Id">@Html.DisplayFor(modelItem => item.StockDescription)</a>
+        </td>
+        <td>
+            <a href="/Stocks/Details/@item.Id">@Html.DisplayFor(modelItem => item.CreatedOn)</a>
+        </td>
+        <td>
+            <a href="/Stocks/Details/@item.Id">@Html.DisplayFor(modelItem => item.AspNetUser.Email)</a>
+        </td>
+        <td>
+            <a href="/Stocks/Details/@item.Id">@Html.DisplayFor(modelItem => item.Supplier.Name)</a>
+        </td>
+        @*<td>
+            <a href="/Stocks/Edit/@item.Id" class="btn btn-warning">Edit</a>
+        </td>*@
+    </tr>
+}
+
+</table>
